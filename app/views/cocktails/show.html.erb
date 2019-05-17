@@ -1,13 +1,26 @@
-<h1>Detail of <%=@cocktail.name%></h1>
 
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1528131678130-c15f627bce80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80');">
+  <div class="container">
+    <h1><%=@cocktail.name%></h1>
+  </div>
+</div>
+
+<div >
+<div class = "container mt-3">
 <ul>
 <% @cocktail.doses.each do |dose| %>
-  <li> <%= dose.description %> of <%= dose.ingredient.name %></li>
+  <li> <%= dose.description %> of <%= dose.ingredient.name %> <%= link_to "<i class='far fa-trash-alt'></i>".html_safe, dose_path(dose), method: "delete"  %></li>
 <% end %>
-
 </ul>
+</div>
 
+
+<div class="container">
 <%= render 'dose_form' %>
-
+</div>
+</div>
 
 <%= link_to 'Show all cocktails', cocktails_path %>
+
+
+

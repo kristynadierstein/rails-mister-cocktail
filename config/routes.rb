@@ -1,15 +1,11 @@
 Rails.application.routes.draw do
-  get 'coctails/doses'
+  get 'pages/home'
+  # get 'coctails/doses'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :cocktails do
-    resources :doses
+    resources :doses, only: [:new, :create]
   end
 
-  # resources :doses, only: :index do
-  #   member do
-  #     get 'admin_login'
-  #   end
-  # end
+  resources :doses, only: [:destroy]
 
-  resources :ingredients
 end
